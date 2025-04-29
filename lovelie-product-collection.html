@@ -41,15 +41,15 @@
     <nav class="fixed w-full bg-stone-50 bg-opacity-90 backdrop-blur-sm z-50 border-b border-stone-200" x-data="{ open: false }">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center">
-                <a href="/index.html" class="text-2xl font-light tracking-wider text-stone-800">lovelie</a>
+                <a href="index.html" class="text-2xl font-light tracking-wider text-stone-800">lovelie</a>
             </div>
             
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center space-x-8">
-                <a href="lovelie-landing-page.html#about" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">About</a>
+                <a href="index.html#about" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">About</a>
                 <a href="lovelie-product-collection.html" class="text-sm tracking-wide text-stone-800 border-b border-stone-800 transition duration-300">Shop</a>
-                <a href="lovelie-landing-page.html#testimonials" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">Reviews</a>
-                <a href="lovelie-landing-page.html#contact" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">Contact</a>
+                <a href="index.html#testimonials" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">Reviews</a>
+                <a href="index.html#contact" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">Contact</a>
             </div>
             
             <!-- Mobile Menu Button -->
@@ -64,10 +64,10 @@
         <!-- Mobile Menu -->
         <div x-show="open" class="md:hidden bg-stone-50 py-4 px-4 border-t border-stone-200" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform -translate-y-2" x-transition:enter-end="opacity-100 transform translate-y-0">
             <div class="flex flex-col space-y-4">
-                <a href="lovelie-landing-page.html#about" @click="open = false" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">About</a>
+                <a href="index.html#about" @click="open = false" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">About</a>
                 <a href="lovelie-product-collection.html" @click="open = false" class="text-sm tracking-wide text-stone-800 border-b border-stone-800 transition duration-300">Shop</a>
-                <a href="lovelie-landing-page.html#testimonials" @click="open = false" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">Reviews</a>
-                <a href="lovelie-landing-page.html#contact" @click="open = false" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">Contact</a>
+                <a href="index.html#testimonials" @click="open = false" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">Reviews</a>
+                <a href="index.html#contact" @click="open = false" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">Contact</a>
             </div>
         </div>
     </nav>
