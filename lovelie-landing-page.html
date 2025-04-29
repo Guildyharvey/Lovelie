@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover Lovelie's elegant ear clip jewelry, handcrafted with hypoallergenic materials for timeless beauty.">
+    <title>Lovelie | Elegant Ear Clip Jewelry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.5/cdn.min.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        h1, h2, h3, h4, h5 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .product-card:hover .product-hover {
+            opacity: 1;
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hover-zoom:hover {
+            transform: scale(1.03);
+            transition: transform 0.3s ease;
+        }
+        .added-to-cart {
+            animation: addToCart 1s ease;
+        }
+        @keyframes addToCart {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-stone-50 bg-opacity-90 backdrop-blur-sm z-50 border-b border-stone-200" x-data="{ open: false }">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="#" class="text-2xl font-light tracking-wider text-stone-800">lovelie</a>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">About</a>
+                <a href="#products" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">Shop</a>
+                <a href="#testimonials" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">Reviews</a>
+                <a href="#contact" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">Contact</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button @click="open = !open" class="text-stone-800 focus:outline-none">
+                    <i x-show="!open" class="fas fa-bars text-xl"></i>
+                    <i x-show="open" class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div x-show="open" class="md:hidden bg-stone-50 py-4 px-4 border-t border-stone-200" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform -translate-y-2" x-transition:enter-end="opacity-100 transform translate-y-0">
+            <div class="flex flex-col space-y-4">
+                <a href="#about" @click="open = false" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">About</a>
+                <a href="#products" @click="open = false" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">Shop</a>
+                <a href="#testimonials" @click="open = false" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">Reviews</a>
+                <a href="#contact" @click="open = false" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="assets/images/hero.jpeg" alt="Elegant ear clip jewelry" class="w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+        </div>
+        <div class="container mx-auto px-4 z-10 text-center text-white">
+            <h1 class="text-4xl md:text-6xl font-light mb-4 tracking-wider fade-in">Elegance in Every Clip</h1>
+            <p class="text-lg md:text-xl font-light mb-8 tracking-wide max-w-lg mx-auto fade-in">Handcrafted ear clips that transform your everyday look into something extraordinary.</p>
+            <a href="#products" class="inline-block bg-white text-stone-800 px-8 py-3 rounded-none hover:bg-stone-100 transition duration-300 tracking-wider text-sm fade-in">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <img src="assets/images/Jewelry crafting.jpg" alt="Crafting process" class="w-full h-auto object-cover rounded-lg shadow-md">
+                </div>
+                <div class="md:w-1/2 md:pl-16">
+                    <h2 class="text-3xl md:text-4xl font-light mb-6 tracking-wide">About Lovelie</h2>
+                    <p class="text-stone-600 mb-6 leading-relaxed">
+                        Born from a passion for elegance and simplicity, Lovelie specializes in designing ear clips that 
+                        blend timeless aesthetics with modern comfort. Each piece is meticulously handcrafted to ensure 
+                        exceptional quality and distinctive design.
+                    </p>
+                    <p class="text-stone-600 mb-8 leading-relaxed">
+                        Our commitment to ethical practices is reflected in our use of hypoallergenic materials and 
+                        sustainable sourcing. We believe that true luxury lies in the details, which is why each Lovelie 
+                        piece undergoes rigorous quality control before reaching you.
+                    </p>
+                    <div class="flex flex-wrap gap-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-gem text-stone-400 text-xl mr-3"></i>
+                            <span class="text-sm">Hypoallergenic Materials</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-hands text-stone-400 text-xl mr-3"></i>
+                            <span class="text-sm">Handcrafted with Care</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-leaf text-stone-400 text-xl mr-3"></i>
+                            <span class="text-sm">Ethically Sourced</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-24 bg-stone-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-light mb-2 tracking-wide text-center">Our Collection</h2>
+            <p class="text-stone-600 text-center mb-12 max-w-lg mx-auto">Discover our latest designs, each embodying the perfect balance of sophistication and everyday wearability.</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Pearl Earring -->
+                <div class="product-card relative overflow-hidden hover-zoom transition duration-300">
+                    <img src="assets/images/Pearl Earing 3$.jpeg" alt="Pearl ear clip" class="w-full h-[400px] object-cover">
+                    <div class="mt-4">
+                        <h3 class="text-lg font-medium">Classic Pearl Ear Clip</h3>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-stone-600">$3.00</span>
+                            <button class="text-stone-800 hover:text-stone-600 transition duration-300 add-to-cart-btn">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Opal Earring -->
+                <div class="product-card relative overflow-hidden hover-zoom transition duration-300">
+                    <img src="assets/images/Opal earing 8$.jpeg" alt="Opal ear clip" class="w-full h-[400px] object-cover">
+                    <div class="mt-4">
+                        <h3 class="text-lg font-medium">Elegant Opal Ear Clip</h3>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-stone-600">$8.00</span>
+                            <button class="text-stone-800 hover:text-stone-600 transition duration-300 add-to-cart-btn">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Heart Earring -->
+                <div class="product-card relative overflow-hidden hover-zoom transition duration-300">
+                    <img src="assets/images/Heart Earing 7$.jpeg" alt="Heart ear clip" class="w-full h-[400px] object-cover">
+                    <div class="mt-4">
+                        <h3 class="text-lg font-medium">Romantic Heart Ear Clip</h3>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-stone-600">$7.00</span>
+                            <button class="text-stone-800 hover:text-stone-600 transition duration-300 add-to-cart-btn">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gold Earring -->
+                <div class="product-card relative overflow-hidden hover-zoom transition duration-300">
+                    <img src="assets/images/Gold Earing 6$.jpeg" alt="Gold ear clip" class="w-full h-[400px] object-cover">
+                    <div class="mt-4">
+                        <h3 class="text-lg font-medium">Classic Gold Ear Clip</h3>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-stone-600">$6.00</span>
+                            <button class="text-stone-800 hover:text-stone-600 transition duration-300 add-to-cart-btn">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flower Earring -->
+                <div class="product-card relative overflow-hidden hover-zoom transition duration-300">
+                    <img src="assets/images/Flower Earing 5$.jpeg" alt="Flower ear clip" class="w-full h-[400px] object-cover">
+                    <div class="mt-4">
+                        <h3 class="text-lg font-medium">Delicate Flower Ear Clip</h3>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-stone-600">$5.00</span>
+                            <button class="text-stone-800 hover:text-stone-600 transition duration-300 add-to-cart-btn">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ribbon Earring -->
+                <div class="product-card relative overflow-hidden hover-zoom transition duration-300">
+                    <img src="assets/images/Ribbon earing 10$.jpeg" alt="Ribbon ear clip" class="w-full h-[400px] object-cover">
+                    <div class="mt-4">
+                        <h3 class="text-lg font-medium">Elegant Ribbon Ear Clip</h3>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-stone-600">$10.00</span>
+                            <button class="text-stone-800 hover:text-stone-600 transition duration-300 add-to-cart-btn">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="lovelie-product-collection.html" class="inline-block border border-stone-800 text-stone-800 px-8 py-3 hover:bg-stone-800 hover:text-white transition duration-300 tracking-wider text-sm">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-light mb-2 tracking-wide text-center">Customer Stories</h2>
+            <p class="text-stone-600 text-center mb-12 max-w-lg mx-auto">See how our customers style their Lovelie ear clips in their everyday lives.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-stone-50 p-6 border border-stone-100">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-stone-600 mb-6 italic">"These ear clips are so comfortable I forget I'm wearing them. The design is subtle yet eye-catching, and I receive compliments every time."</p>
+                    <div class="flex items-center">
+                        <img src="/api/placeholder/60/60" alt="Customer" class="w-10 h-10 rounded-full object-cover">
+                        <div class="ml-3">
+                            <h4 class="text-sm font-medium">Emma L.</h4>
+                            <p class="text-xs text-stone-500">Los Angeles, CA</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-stone-50 p-6 border border-stone-100">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-stone-600 mb-6 italic">"As someone with sensitive ears, I appreciate that these clips are hypoallergenic. The Luna design is my absolute favorite for both casual and formal occasions."</p>
+                    <div class="flex items-center">
+                        <img src="/api/placeholder/60/60" alt="Customer" class="w-10 h-10 rounded-full object-cover">
+                        <div class="ml-3">
+                            <h4 class="text-sm font-medium">Sophia T.</h4>
+                            <p class="text-xs text-stone-500">New York, NY</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-stone-50 p-6 border border-stone-100">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-stone-600 mb-6 italic">"The craftsmanship is exceptional. These ear clips have become my signature accessory, and the packaging makes them perfect for gifting too."</p>
+                    <div class="flex items-center">
+                        <img src="/api/placeholder/60/60" alt="Customer" class="w-10 h-10 rounded-full object-cover">
+                        <div class="ml-3">
+                            <h4 class="text-sm font-medium">Olivia R.</h4>
+                            <p class="text-xs text-stone-500">Chicago, IL</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed Section -->
+    <section class="py-24 bg-stone-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-light mb-2 tracking-wide text-center">Follow Our Journey</h2>
+            <p class="text-stone-600 text-center mb-4 max-w-lg mx-auto">Join our community on Instagram <a href="#" class="text-stone-800 border-b border-stone-800">@lov__elie</a></p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
+                <a href="#" class="block overflow-hidden hover-zoom">
+                    <img src="/api/placeholder/400/400" alt="Instagram post" class="w-full h-auto object-cover">
+                </a>
+                <a href="#" class="block overflow-hidden hover-zoom">
+                    <img src="/api/placeholder/400/400" alt="Instagram post" class="w-full h-auto object-cover">
+                </a>
+                <a href="#" class="block overflow-hidden hover-zoom">
+                    <img src="/api/placeholder/400/400" alt="Instagram post" class="w-full h-auto object-cover">
+                </a>
+                <a href="#" class="block overflow-hidden hover-zoom">
+                    <img src="/api/placeholder/400/400" alt="Instagram post" class="w-full h-auto object-cover">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-4 max-w-xl text-center">
+            <h2 class="text-3xl md:text-4xl font-light mb-4 tracking-wide">Stay Connected</h2>
+            <p class="text-stone-600 mb-8">Subscribe to our newsletter for exclusive offers, styling tips, and new collection previews.</p>
+            
+            <form class="flex flex-col md:flex-row gap-4">
+                <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 border border-stone-200 focus:outline-none focus:border-stone-400 transition duration-300">
+                <button type="submit" class="bg-stone-800 text-white px-8 py-3 hover:bg-stone-700 transition duration-300 tracking-wider text-sm">Subscribe</button>
+            </form>
+            
+            <p class="text-xs text-stone-500 mt-4">By subscribing, you agree to our Privacy Policy and consent to receive updates from Lovelie.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-stone-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-light mb-2 tracking-wide text-center">Get in Touch</h2>
+            <p class="text-stone-600 text-center mb-12 max-w-lg mx-auto">Connect with us through your preferred platform</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/YOUR_WHATSAPP_NUMBER" target="_blank" rel="noopener noreferrer" 
+                   class="flex flex-col items-center p-8 bg-white border border-stone-100 hover:border-stone-300 transition duration-300 group">
+                    <i class="fab fa-whatsapp text-4xl text-stone-400 group-hover:text-green-500 transition duration-300 mb-4"></i>
+                    <h3 class="text-lg font-medium mb-2">WhatsApp</h3>
+                    <p class="text-stone-600 text-sm text-center mb-4">Chat with us directly</p>
+                    <span class="text-stone-800 text-sm group-hover:text-green-500 transition duration-300">Message Now</span>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://instagram.com/lov__elie" target="_blank" rel="noopener noreferrer" 
+                   class="flex flex-col items-center p-8 bg-white border border-stone-100 hover:border-stone-300 transition duration-300 group">
+                    <i class="fab fa-instagram text-4xl text-stone-400 group-hover:text-pink-500 transition duration-300 mb-4"></i>
+                    <h3 class="text-lg font-medium mb-2">Instagram</h3>
+                    <p class="text-stone-600 text-sm text-center mb-4">Follow our latest updates</p>
+                    <span class="text-stone-800 text-sm group-hover:text-pink-500 transition duration-300">@lov__elie</span>
+                </a>
+
+                <!-- Shopee -->
+                <a href="https://shopee.com/YOUR_SHOPEE_STORE" target="_blank" rel="noopener noreferrer" 
+                   class="flex flex-col items-center p-8 bg-white border border-stone-100 hover:border-stone-300 transition duration-300 group">
+                    <i class="fas fa-shopping-bag text-4xl text-stone-400 group-hover:text-orange-500 transition duration-300 mb-4"></i>
+                    <h3 class="text-lg font-medium mb-2">Shopee</h3>
+                    <p class="text-stone-600 text-sm text-center mb-4">Shop our collection</p>
+                    <span class="text-stone-800 text-sm group-hover:text-orange-500 transition duration-300">Visit Store</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-100 py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-medium mb-4">Lovelie</h3>
+                    <p class="text-stone-600 text-sm mb-6">Elegance in every clip. Handcrafted ear jewelry for the discerning woman.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-stone-600 hover:text-stone-800 transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-stone-600 hover:text-stone-800 transition duration-300">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-stone-600 hover:text-stone-800 transition duration-300">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-medium mb-4">Shop</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="lovelie-product-collection.html" class="text-stone-600 hover:text-stone-800 transition duration-300">All Products</a></li>
+                        <li><a href="#" class="text-stone-600 hover:text-stone-800 transition duration-300">New Arrivals</a></li>
+                        <li><a href="#" class="text-stone-600 hover:text-stone-800 transition duration-300">Bestsellers</a></li>
+                        <li><a href="#" class="text-stone-600 hover:text-stone-800 transition duration-300">Gift Cards</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-medium mb-4">Help</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="lovelie-faq.html" class="text-stone-600 hover:text-stone-800 transition duration-300">FAQ</a></li>
+                        <li><a href="lovelie-care-instructions.html" class="text-stone-600 hover:text-stone-800 transition duration-300">Care Instructions</a></li>
+                        <li><a href="#contact" class="text-stone-600 hover:text-stone-800 transition duration-300">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-medium mb-4">Contact</h3>
+                    <ul class="space-y-2 text-sm text-stone-600">
+                        <li>
+                            <i class="fas fa-envelope text-stone-400 mr-2"></i>
+                            hello@lovelie.com
+                        </li>
+                        <li>
+                            <i class="fas fa-phone text-stone-400 mr-2"></i>
+                            +1 (800) 123-4567
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt text-stone-400 mr-2"></i>
+                            123 Elegance Ave, Suite 101<br>
+                            New York, NY 10001
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-stone-200 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-stone-500 mb-4 md:mb-0">&copy; 2025 Lovelie. All rights reserved.</p>
+                <div class="flex space-x-6 text-sm">
+                    <a href="#" class="text-stone-500 hover:text-stone-800 transition duration-300">Privacy Policy</a>
+                    <a href="#" class="text-stone-500 hover:text-stone-800 transition duration-300">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

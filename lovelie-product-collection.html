@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse Lovelie's complete collection of elegant ear clip jewelry, handcrafted with hypoallergenic materials.">
+    <title>Collection | Lovelie Ear Clip Jewelry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.5/cdn.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        h1, h2, h3, h4, h5 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .product-card:hover .product-hover {
+            opacity: 1;
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hover-zoom:hover {
+            transform: scale(1.03);
+            transition: transform 0.3s ease;
+        }
+        .filter-active {
+            color: #44403c;
+            border-bottom: 1px solid #44403c;
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-stone-50 bg-opacity-90 backdrop-blur-sm z-50 border-b border-stone-200" x-data="{ open: false }">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="/lovelie-landing-page.html" class="text-2xl font-light tracking-wider text-stone-800">lovelie</a>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="lovelie-landing-page.html#about" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">About</a>
+                <a href="lovelie-product-collection.html" class="text-sm tracking-wide text-stone-800 border-b border-stone-800 transition duration-300">Shop</a>
+                <a href="lovelie-landing-page.html#testimonials" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">Reviews</a>
+                <a href="lovelie-landing-page.html#contact" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">Contact</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button @click="open = !open" class="text-stone-800 focus:outline-none">
+                    <i x-show="!open" class="fas fa-bars text-xl"></i>
+                    <i x-show="open" class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div x-show="open" class="md:hidden bg-stone-50 py-4 px-4 border-t border-stone-200" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform -translate-y-2" x-transition:enter-end="opacity-100 transform translate-y-0">
+            <div class="flex flex-col space-y-4">
+                <a href="lovelie-landing-page.html#about" @click="open = false" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">About</a>
+                <a href="lovelie-product-collection.html" @click="open = false" class="text-sm tracking-wide text-stone-800 border-b border-stone-800 transition duration-300">Shop</a>
+                <a href="lovelie-landing-page.html#testimonials" @click="open = false" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">Reviews</a>
+                <a href="lovelie-landing-page.html#contact" @click="open = false" class="text-sm tracking-wide hover:text-stone-600 transition duration-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Collection Header -->
+    <section class="pt-32 pb-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl md:text-5xl font-light mb-4 tracking-wide text-center">Our Collection</h1>
+            <p class="text-stone-600 text-center mb-8 max-w-lg mx-auto">Discover our complete range of handcrafted ear clips, each designed to enhance your natural elegance.</p>
+        </div>
+    </section>
+
+    <!-- Filter and Sort Bar -->
+    <section class="py-6 bg-white border-y border-stone-200">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center" x-data="{ showFilter: false }">
+                <!-- Categories -->
+                <div class="flex flex-wrap gap-6 mb-4 md:mb-0">
+                    <a href="#" class="text-sm tracking-wide filter-active py-1">All Collections</a>
+                    <a href="#" class="text-sm tracking-wide text-stone-500 hover:text-stone-800 py-1">New Arrivals</a>
+                    <a href="#" class="text-sm tracking-wide text-stone-500 hover:text-stone-800 py-1">Bestsellers</a>
+                    <a href="#" class="text-sm tracking-wide text-stone-500 hover:text-stone-800 py-1">Limited Edition</a>
+                </div>
+                
+                <!-- Filter and Sort -->
+                <div class="flex items-center space-x-6">
+                    <button @click="showFilter = !showFilter" class="text-sm tracking-wide hover:text-stone-600 transition duration-300 flex items-center">
+                        <span>Filter</span>
+                        <i class="fas fa-chevron-down ml-2 text-xs" :class="{ 'transform rotate-180': showFilter }"></i>
+                    </button>
+                    
+                    <div class="relative" x-data="{ showSort: false }">
+                        <button @click="showSort = !showSort" class="text-sm tracking-wide hover:text-stone-600 transition duration-300 flex items-center">
+                            <span>Sort by: Latest</span>
+                            <i class="fas fa-chevron-down ml-2 text-xs" :class="{ 'transform rotate-180': showSort }"></i>
+                        </button>
+                        
+                        <div x-show="showSort" @click.away="showSort = false" class="absolute right-0 mt-2 w-40 bg-white shadow-md z-10 py-2" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100">
+                            <a href="#" class="block px-4 py-2 text-sm text-stone-700 hover:bg-stone-100">Latest</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-stone-700 hover:bg-stone-100">Price: Low to High</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-stone-700 hover:bg-stone-100">Price: High to Low</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-stone-700 hover:bg-stone-100">Bestselling</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Filter Panel -->
+            <div x-data="{ showFilter: false }" x-show="showFilter" class="mt-6 pt-6 border-t border-stone-200" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform -translate-y-2" x-transition:enter-end="opacity-100 transform translate-y-0">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <!-- Price Range -->
+                    <div>
+                        <h3 class="text-sm font-medium mb-3">Price Range</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox">
+                                <span class="ml-2 text-sm text-stone-600">Under $50</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox">
+                                <span class="ml-2 text-sm text-stone-600">$50 - $100</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox">
+                                <span class="ml-2 text-sm text-stone-600">$100 - $150</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox">
+                                <span class="ml-2 text-sm text-stone-600">Over $150</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Material -->
+                    <div>
+                        <h3 class="text-sm font-medium mb-3">Material</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox">
+                                <span class="ml-2 text-sm text-stone-600">Sterling Silver</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox">
+                                <span class="ml-2 text-sm text-stone-600">Gold Plated</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox">
+                                <span class="ml-2 text-sm text-stone-600">Rose Gold</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox">
+                                <span class="ml-2 text-sm text-stone-600">Pearl Accents</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Style -->
+                    <div>
+                        <h3 class="text-sm font-medium mb-3">Style</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox">
+                                <span class="ml-2 text-sm text-stone-600">Minimalist</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox">
+                                <span class="ml-2 text-sm text-stone-600">Floral</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox">
+                                <span class="ml-2 text-sm text-stone-600">Geometric</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox">
+                                <span class="ml-2 text-sm text-stone-600">Statement</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Filter Buttons -->
+                    <div class="flex items-end">
+                        <div class="space-x-4">
+                            <button class="bg-stone-800 text-white px-6 py-2 text-sm hover:bg-stone-700 transition duration-300">Apply Filters</button>
+                            <button class="text-stone-600 text-sm hover:text-stone-800 transition duration-300">Clear All</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="py-12 bg-stone-50">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Pearl Earring -->
+                <div class="product-card relative overflow-hidden hover-zoom transition duration-300">
+                    <img src="assets/images/Pearl Earing 3$.jpeg" alt="Pearl ear clip" class="w-full h-[400px] object-cover">
+                    <div class="mt-4">
+                        <h3 class="text-lg font-medium">Classic Pearl Ear Clip</h3>
+                        <div class="mt-2">
+                            <span class="text-stone-600">$3.00</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Opal Earring -->
+                <div class="product-card relative overflow-hidden hover-zoom transition duration-300">
+                    <img src="assets/images/Opal earing 8$.jpeg" alt="Opal ear clip" class="w-full h-[400px] object-cover">
+                    <div class="mt-4">
+                        <h3 class="text-lg font-medium">Elegant Opal Ear Clip</h3>
+                        <div class="mt-2">
+                            <span class="text-stone-600">$8.00</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Heart Earring -->
+                <div class="product-card relative overflow-hidden hover-zoom transition duration-300">
+                    <img src="assets/images/Heart Earing 7$.jpeg" alt="Heart ear clip" class="w-full h-[400px] object-cover">
+                    <div class="mt-4">
+                        <h3 class="text-lg font-medium">Romantic Heart Ear Clip</h3>
+                        <div class="mt-2">
+                            <span class="text-stone-600">$7.00</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gold Earring -->
+                <div class="product-card relative overflow-hidden hover-zoom transition duration-300">
+                    <img src="assets/images/Gold Earing 6$.jpeg" alt="Gold ear clip" class="w-full h-[400px] object-cover">
+                    <div class="mt-4">
+                        <h3 class="text-lg font-medium">Classic Gold Ear Clip</h3>
+                        <div class="mt-2">
+                            <span class="text-stone-600">$6.00</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Flower Earring -->
+                <div class="product-card relative overflow-hidden hover-zoom transition duration-300">
+                    <img src="assets/images/Flower Earing 5$.jpeg" alt="Flower ear clip" class="w-full h-[400px] object-cover">
+                    <div class="mt-4">
+                        <h3 class="text-lg font-medium">Delicate Flower Ear Clip</h3>
+                        <div class="mt-2">
+                            <span class="text-stone-600">$5.00</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Ribbon Earring -->
+                <div class="product-card relative overflow-hidden hover-zoom transition duration-300">
+                    <img src="assets/images/Ribbon earing 10$.jpeg" alt="Ribbon ear clip" class="w-full h-[400px] object-cover">
+                    <div class="mt-4">
+                        <h3 class="text-lg font-medium">Elegant Ribbon Ear Clip</h3>
+                        <div class="mt-2">
+                            <span class="text-stone-600">$10.00</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gold Earring 2 -->
+                <div class="product-card relative overflow-hidden hover-zoom transition duration-300">
+                    <img src="assets/images/Gold earing 2 6$.jpeg" alt="Gold ear clip 2" class="w-full h-[400px] object-cover">
+                    <div class="mt-4">
+                        <h3 class="text-lg font-medium">Gold Ear Clip 2</h3>
+                        <div class="mt-2">
+                            <span class="text-stone-600">$6.00</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Flower Earring 2 -->
+                <div class="product-card relative overflow-hidden hover-zoom transition duration-300">
+                    <img src="assets/images/Flower earing 2 5$.jpeg" alt="Flower ear clip 2" class="w-full h-[400px] object-cover">
+                    <div class="mt-4">
+                        <h3 class="text-lg font-medium">Flower Ear Clip 2</h3>
+                        <div class="mt-2">
+                            <span class="text-stone-600">$5.00</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Flower Earring 3 -->
+                <div class="product-card relative overflow-hidden hover-zoom transition duration-300">
+                    <img src="assets/images/Flower earing 3 5$.jpeg" alt="Flower ear clip 3" class="w-full h-[400px] object-cover">
+                    <div class="mt-4">
+                        <h3 class="text-lg font-medium">Flower Ear Clip 3</h3>
+                        <div class="mt-2">
+                            <span class="text-stone-600">$5.00</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Circle Earring -->
+                <div class="product-card relative overflow-hidden hover-zoom transition duration-300">
+                    <img src="assets/images/Circle Earing 5$.jpeg" alt="Circle ear clip" class="w-full h-[400px] object-cover">
+                    <div class="mt-4">
+                        <h3 class="text-lg font-medium">Circle Ear Clip</h3>
+                        <div class="mt-2">
+                            <span class="text-stone-600">$5.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="mt-16 flex justify-center">
+                <div class="inline-flex items-center">
+                    <a href="#" class="h-10 w-10 flex items-center justify-center border border-stone-200 text-stone-600 hover:bg-stone-100 transition duration-300">
+                        <i class="fas fa-chevron-left text-xs"></i>
+                    </a>
+                    <a href="#" class="h-10 w-10 flex items-center justify-center border border-stone-200 text-white bg-stone-800">1</a>
+                    <a href="#" class="h-10 w-10 flex items-center justify-center border border-stone-200 text-stone-600 hover:bg-stone-100 transition duration-300">2</a>
+                    <a href="#" class="h-10 w-10 flex items-center justify-center border border-stone-200 text-stone-600 hover:bg-stone-100 transition duration-300">3</a>
+                    <span class="h-10 px-2 flex items-center justify-center border-t border-b border-stone-200">...</span>
+                    <a href="#" class="h-10 w-10 flex items-center justify-center border border-stone-200 text-stone-600 hover:bg-stone-100 transition duration-300">8</a>
+                    <a href="#" class="h-10 w-10 flex items-center justify-center border border-stone-200 text-stone-600 hover:bg-stone-100 transition duration-300">
+                        <i class="fas fa-chevron-right text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- You Might Also Like -->
+    <section class="py-16 bg-white hidden">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-light mb-8 tracking-wide">You Might Also Like</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Related 1 -->
+                <div class="product-card relative overflow-hidden hover-zoom transition duration-300">
+                    <img src="/api/placeholder/600/800" alt="Mini pearl ear clip" class="w-full h-auto object-cover">
+                    <div class="mt-4">
+                        <h3 class="text-lg font-medium">Mini Pearl Ear Clip</h3>
+                        <div class="mt-2">
+                            <span class="text-stone-600">$45.00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Related 2 -->
+                <div class="product-card relative overflow-hidden hover-zoom transition duration-300">
+                    <img src="/api/placeholder/600/800" alt="Gemstone ear clip" class="w-full h-auto object-cover">
+                    <div class="mt-4">
+                        <h3 class="text-lg font-medium">Gemstone Ear Clip</h3>
+                        <div class="mt-2">
+                            <span class="text-stone-600">$120.00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Related 3 -->
+                <div class="product-card relative overflow-hidden hover-zoom transition duration-300">
+                    <img src="/api/placeholder/600/800" alt="Rose gold ear clip" class="w-full h-auto object-cover">
+                    <div class="mt-4">
+                        <h3 class="text-lg font-medium">Rose Gold Ear Clip</h3>
+                        <div class="mt-2">
+                            <span class="text-stone-600">$100.00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Related 4 -->
+                <div class="product-card relative overflow-hidden hover-zoom transition duration-300">
+                    <img src="/api/placeholder/600/800" alt="Sterling silver ear clip" class="w-full h-auto object-cover">
+                    <div class="mt-4">
+                        <h3 class="text-lg font-medium">Sterling Silver Ear Clip</h3>
+                        <div class="mt-2">
+                            <span class="text-stone-600">$75.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Info Modal -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 hidden" id="productInfoModal">
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl bg-white rounded-lg shadow-lg">
+            <div class="flex items-center justify-between p-4">
+                <h2 class="text-2xl font-light">Product Details</h2>
+                <button class="text-stone-800 hover:text-stone-600" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="flex">
+                <div class="w-1/2 p-4">
+                    <img id="modalProductImage" src="" alt="Product Image" class="w-full h-auto">
+                </div>
+                <div class="w-1/2 p-4">
+                    <!-- Product Info -->
+                    <div class="p-8">
+                        <h2 id="modalProductName" class="text-2xl font-light mb-2"></h2>
+                        <p id="modalProductPrice" class="text-xl text-stone-600 mb-4"></p>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-sm font-medium mb-2">Description</h3>
+                            <p id="modalProductDescription" class="text-stone-600 text-sm leading-relaxed"></p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-sm font-medium mb-2">Details</h3>
+                            <ul id="modalProductDetails" class="text-stone-600 text-sm space-y-2">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(product) {
+            document.getElementById('productInfoModal').classList.remove('hidden');
+            document.getElementById('modalProductName').textContent = product.name;
+            document.getElementById('modalProductPrice').textContent = `$${product.price.toFixed(2)}`;
+            document.getElementById('modalProductDescription').textContent = product.description;
+            document.getElementById('modalProductImage').src = product.image;
+            document.getElementById('modalProductDetails').innerHTML = product.details.map(detail => `<li>${detail}</li>`).join('');
+        }
+
+        function closeModal() {
+            document.getElementById('productInfoModal').classList.add('hidden');
+        }
+
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const product = {
+                    name: card.querySelector('h3').textContent,
+                    price: parseFloat(card.querySelector('span').textContent.replace('$', '')),
+                    description: 'This is a detailed description of the product.',
+                    image: card.querySelector('img').src,
+                    details: [
+                        'Material: Sterling Silver',
+                        'Style: Minimalist',
+                        'Size: One Size',
+                        'Weight: 5g'
+                    ]
+                };
+                openModal(product);
+            });
+        });
+    </script>
+</body>
+</html>

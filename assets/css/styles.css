@@ -1,0 +1,24 @@
+/* Modal Animation */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#productModal .bg-white {
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+/* Modal Close Button Hover Effect */
+#closeModal {
+    transition: transform 0.2s ease;
+}
+
+#closeModal:hover {
+    transform: rotate(90deg);
+}
